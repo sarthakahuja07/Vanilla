@@ -18,12 +18,24 @@ var setClock =function () {
     hour.style.transform=`rotate(${90+hourTime*6 + (minTime/2)}deg)`;
 
 
-    if(secTime==0){
+    if(secTime==0 ){
         sec.style.transition='none';
     }else{
         sec.style.transition='all 0.1s';
-
     }
+
+    if(minTime==0 ){
+        min.style.transition='none';
+    }else{
+        min.style.transition='all 0.1s';
+    }
+
+    if(hourTime==0 ){
+        hour.style.transition='none';
+    }else{
+        hour.style.transition='all 0.1s';
+    }
+
 }
 
 
