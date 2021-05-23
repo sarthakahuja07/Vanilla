@@ -1,0 +1,1 @@
+Hold shift to select multiple : https://sarthakahuja07.github.io/Vanilla/Hold%20Shift%20To%20Select/
