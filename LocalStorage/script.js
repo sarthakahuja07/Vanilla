@@ -7,7 +7,7 @@ const resetButton=document.querySelector(".resetButton")
 if(localStorage.getItem("items")!=""){
     items=JSON.parse(localStorage.getItem("items")) 
 }else{
-    items=[ ];
+    items=[];
 }
 function addItem(e) {
   var textInput = this.querySelector("input[name='item']");
