@@ -1,1 +1,1 @@
-Key Sequencing Detedction : https://sarthakahuja07.github.io/Vanilla/Mouse%20Move%20Shadow/
+Key Sequencing Detedction : https://sarthakahuja07.github.io/Vanilla/Mouse%20Move%20Shadow/index.html
