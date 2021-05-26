@@ -1,0 +1,1 @@
+Hold shift to select multiple : https://sarthakahuja07.github.io/Vanilla/Js%20Reference/
