@@ -7,7 +7,8 @@ console.log(geo);
 
 function success(pos){
     console.log(pos);
-    var speedText=Math.floor(pos.coords.speed);
+    console.log(Math.floor(pos.coords.speed*1000));
+    var speedText=Math.floor(pos.coords.speed*1000);
     speed.textContent=speedText
     arrow.style.transform= `rotate(${Math.floor(pos.coords.heading)}deg)`;
 }
