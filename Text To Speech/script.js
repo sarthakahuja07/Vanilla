@@ -5,30 +5,27 @@ var speak = document.querySelector("#speak");
 var stopButton = document.querySelector("#stop");
 var word = new SpeechSynthesisUtterance();
 
-var bool = false;
-
 var synth = window.speechSynthesis;
 
 function showList() {
-  if (bool) {
-    return;
-  }
-  bool = true;
-  voices = synth.getVoices();
-  voices.forEach((element, index) => {
-    if (element.lang.includes("en")) {
-      // console.log(element);
-      var option = document.createElement("option");
-      option.textContent = element.name;
-      option.value = index;
-      voiceSelect.appendChild(option);
-    }
-  });
+	if(voiceSelect.childElementCount===0){
+		voices = synth.getVoices();
+		voices.forEach((element, index) => {
+		  if (element.lang.includes("en")) {
+			// console.log(element);
+			var option = document.createElement("option");
+			option.textContent = element.name;
+			option.value = index;
+			voiceSelect.appendChild(option);
+		  }
+		});
+	}
+	console.log(voiceSelect.childElementCount);
+
 }
 
 function changeVoice() {
   synth.cancel();
-  console.log(this.value);
   word.voice = voices[this.value];
   speech();
 }
