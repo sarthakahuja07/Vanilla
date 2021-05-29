@@ -6,6 +6,9 @@ var toggle = player.querySelector(".toggle"); //DONE
 var skipButtons = player.querySelectorAll("[data-skip]");//DONE
 var ranges = player.querySelectorAll(".player__slider");//DONE
 var fullScreen = player.querySelector(".fullScreen");//DONE
+var speed=document.querySelector(".speed");
+var speedBar=speed.querySelector(".speed-bar");
+var speedChangeBool=false;
 
 function playOrPause() {
   video.paused ? video.play() : video.pause();
@@ -17,20 +20,20 @@ function updateButton() {
 
 function changeTime() {
   var time = this.dataset.skip;
-  console.log(video.currentTime);
+//   console.log(video.currentTime);
   video.currentTime += parseInt(time);
 }
 
 var isFull = false;
 function enterFull() {
 	if(!isFull){
-		console.dir(player);  
+		// console.dir(player);  
 		player.requestFullscreen();
-		console.dir(player);
+		// console.dir(player);
 		isFull = true;
 	}else{
 		document.exitFullscreen();
-		console.log("hello");
+		// console.log("hello");
 	}
 
 }
@@ -50,7 +53,7 @@ function changeProgress(e){
 	// console.log("pro: " + e.offsetX);
 	// console.dir("total: " + player.clientWidth);
 	var progressTime=(e.offsetX/player.clientWidth)*video.duration;
-	console.log(progressTime);
+	// console.log(progressTime);
 	video.currentTime=progressTime;
 }
 var isMouseDown=false;
@@ -79,3 +82,50 @@ progress.addEventListener("mousemove",function(e){
 progress.addEventListener("click",function(e){
 	(changeProgress(e));
 });
+
+
+//SPPED CHANGE BAR//
+
+var changeBy;
+var start;
+var currHeight;
+var perc;
+
+function changeVideoSpeed(){
+	var videoSpeed =  (0.4) + perc*0.036;
+	video.playbackRate=videoSpeed;
+	speedBar.innerText=`${videoSpeed.toFixed(2)}x`;
+}
+
+speed.addEventListener("mousedown",(e)=>{
+	speedChangeBool=true;
+	currHeight=100-((e.pageY-speed.offsetTop)/speed.offsetHeight)*100;
+	// console.log(currHeight);
+	start=e.screenY;
+	e.preventDefault()
+	speedBar.style.height=`${currHeight}%`;
+	perc=currHeight;
+	changeVideoSpeed();
+});
+
+speed.addEventListener("mouseup",()=>{
+	speedChangeBool=false;
+});
+
+speed.addEventListener("mouseleave",()=>{
+	speedChangeBool=false;
+});
+
+
+speed.addEventListener("mousemove",(e)=>{
+	if(speedChangeBool){
+		e.preventDefault();
+		changeBy=(start-e.screenY);
+		perc = currHeight + (changeBy/speed.offsetHeight)*100;
+		speedBar.style.height=`${perc}%`;
+		changeVideoSpeed();
+
+	}
+});
+
+
