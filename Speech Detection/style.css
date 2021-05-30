@@ -36,3 +36,9 @@ html {
     border: 1px solid;
     border-color: transparent #efe4e4;
   }
+
+  h1{
+    font-size: 4vw;
+    text-align: center;
+  text-shadow: 3px 4px 0 rgba(0,0,0,0.2);
+  }

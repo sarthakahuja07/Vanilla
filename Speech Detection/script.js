@@ -21,8 +21,8 @@ recognition.addEventListener("result", function (e) {
 
 recognition.addEventListener("end", function () {
   if (isOver) {
-    return;
     isOver = false; 
+    return;
   }
   recognition.start();
   console.log("yoo");

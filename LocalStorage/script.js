@@ -21,7 +21,7 @@ function addItem(e) {
   store(items);
   displayItems();
 }
-
+var items=[];
 function displayItems() {
 //   console.table(itemsObj);
   var html = items
@@ -35,6 +35,7 @@ function displayItems() {
      `;
     })
     .join("");
+  console.log(items);
 
   itemsList.innerHTML = html;
   var allitems = itemsList.querySelectorAll("li input");
@@ -51,8 +52,9 @@ function store(items) {
   localStorage.setItem("items",JSON.stringify(items));
 }
 
-function resetItems(){
-    localStorage.setItem("items","");
+function resetItems(e){
+  e.preventDefault();
+    localStorage.removeItem("items");
     items=[]; 
     displayItems();
 }
