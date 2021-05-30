@@ -52,5 +52,5 @@ buttons.forEach((button) =>
 
 input.addEventListener("submit", function (e) {
   e.preventDefault();
-  setTimer(this.querySelector("input").value);
+  setTimer(this.querySelector("input").value*60);
 });
