@@ -30,10 +30,12 @@ function startTimer(newDate) {
 }
 
 function updateDisplay(RemainingTimer) {
-  var minutes = Math.floor(RemainingTimer / 60);
+  var hours=Math.floor(RemainingTimer/3600);
+  RemainingTimer=RemainingTimer%3600;
+  var minutes = Math.floor(RemainingTimer/60);
   var seconds = RemainingTimer % 60;
   console.log();
-  display.querySelector(".display__time-left").innerText =
+  display.querySelector(".display__time-left").innerText =hours+ ":" +
     beautify(minutes) + ":" + beautify(seconds);
 }
 
